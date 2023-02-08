@@ -1,0 +1,2 @@
+#!/bin/bash
+cd $OLD_PWD
