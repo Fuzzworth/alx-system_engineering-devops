@@ -1,2 +1,2 @@
-#!/bin/nash
-env;set
+#!/bin/bash
+set
