@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Comment
 
-awk --profile '{print $1 " " $9}' apache-access.log
+awk --profile '{printf "%s %s\n", $1, $9}' apache-access.log
