@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Comment
+
+awk --profile '{print $1 " " $9}' apache-access.log
