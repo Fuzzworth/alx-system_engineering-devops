@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Comment
+
+for i in "$(ls)";
+do
+	echo "$i" | cut -d '-' -f 2
+done

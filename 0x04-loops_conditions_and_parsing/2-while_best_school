@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Comment
+ 
+count=0
+while (( count < 10 ));
+do
+	echo "Best School"
+	((count++))
+done

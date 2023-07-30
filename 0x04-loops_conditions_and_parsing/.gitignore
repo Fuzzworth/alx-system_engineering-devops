@@ -2,4 +2,5 @@
 
 # Ignore compiled files or local configuration specific to your development environment
 .venv/
+0-RSA_public_key
 *.pyc

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Comment
+ 
+for i in $(seq 1 10); do
+	echo "Best School"
+done
