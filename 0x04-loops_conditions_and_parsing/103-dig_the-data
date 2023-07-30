@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Comment
 
-awk '{printf "%s %s\n", $1, $9}' apache-access.log |awk '{count[$0]++} END {for (word in count) print count[word], word}' | sort -n -r
+awk '{printf "%s %s\n", $1, $9}' apache-access.log |awk '{count[$0]++} END {for (word in count) printf "%s %s\n", count[word], word}' | sort -n -r
