@@ -4,6 +4,6 @@
 count=1
 until (( count > 10 ));
 do
-	echo "$count Best School"
+	echo "Best School"
 	((count++))
 done
