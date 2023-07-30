@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Comment
- 
-for i in {1..10}
+for (( c=1; c<=10; c++ )) 
 do
 	echo "Best School"
 done
