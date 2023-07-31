@@ -19,8 +19,8 @@ stop_f()
 
 restart_f()
 {
-	high_2
-	high_1
+	stop_f
+	start_f
 	echo "manage_my_process restarted"
 }
 
