@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Comment
+
+trap high_2 SIGTERM
+trap high_3 SIGINT
+trap high_1 SIGQUIT
+
+high_1()
+{
+  rm -rf /var/run/myscript.pid
+  exit
+}
+
+high_2()
+{
+  echo "I hate the kill command"
+  high_1
+}
+
+high_3()
+{
+  echo "Y U no love me?!"
+}
+
+echo $$ > /var/run/myscript.pid
+
+while (( 1 ))
+do
+	echo "To infinity and beyond"
+	sleep 2
+done
