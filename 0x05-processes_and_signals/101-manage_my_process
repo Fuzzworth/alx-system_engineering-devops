@@ -19,8 +19,10 @@ stop_f()
 
 restart_f()
 {
-	stop_f
-	start_f
+	rm -rf /var/run/my_process.pid
+	pkill -f ./manage_my_process
+	echo $$ > /var/run/my_process.pid
+	./manage_my_process &
 	echo "manage_my_process restarted"
 }
 
