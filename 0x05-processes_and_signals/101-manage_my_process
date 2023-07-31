@@ -36,7 +36,6 @@ while [ $# -gt 0 ]
 do
 	opt="$1"
 	shift;
-	echo "$opt"
 	case $opt in
 
 		start)
