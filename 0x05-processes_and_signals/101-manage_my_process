@@ -32,21 +32,25 @@ error_f()
 if [ $# -ne 2 ]; then
 	error_f
 fi
+while [ $# -gt 0 ]
+do
+	opt="$1"
+	shift;
+	case $opt in
 
-case $1 in
+		"start")
+			start_f
+			;;
 
-	"start")
-		start_f
-		;;
+		"stop")
+			stop_f
+			;;
 
-	"stop")
-		stop_f
-		;;
-
-	"restart")
-		restart_f
-		;;
-	*)
-		error_f
-		;;
-esac
+		"restart")
+			restart_f
+			;;
+		*)
+			error_f
+			;;
+	esac
+done
