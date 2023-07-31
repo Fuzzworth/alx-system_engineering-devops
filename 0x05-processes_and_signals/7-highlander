@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Comment
 
+trap "I am invincible!!" SIGTERM
 while (( 1 ))
 do
 	echo "To infinity and beyond"
