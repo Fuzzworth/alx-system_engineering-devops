@@ -38,15 +38,15 @@ do
 	shift;
 	case $opt in
 
-		"start")
+		start)
 			start_f
 			;;
 
-		"stop")
+		stop)
 			stop_f
 			;;
 
-		"restart")
+		restart)
 			restart_f
 			;;
 		*)
