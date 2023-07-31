@@ -1,31 +1,52 @@
 #!/usr/bin/env bash
 # Comment
 
-trap high_2 SIGTERM
-trap high_3 SIGINT
-trap high_1 SIGQUIT
 
-high_1()
+start_f()
 {
-  rm -rf /var/run/myscript.pid
-  exit
+
+  echo $$ > /var/run/my_process.pid
+  echo "manage_my_process started"
+  ./manage_my_process &
 }
 
-high_2()
+stop_f()
 {
-  echo "I hate the kill command"
-  high_1
+  rm -rf /var/run/my_process.pid
+  echo "manage_my_process stopped"
+  pkill -f manage_my_process
 }
 
-high_3()
+restart_f()
 {
-  echo "Y U no love me?!"
+	high_2
+	high_1
 }
 
-echo $$ > /var/run/myscript.pid
+error_f()
+{
+	echo "Usage: manage_my_process {start|stop|restart}"
+	exit 1
+}
 
-while (( 1 ))
-do
-	echo "To infinity and beyond"
-	sleep 2
-done
+if [ $# -ne 2 ]; then
+	error_f
+fi
+
+case $2 in
+
+	"start")
+		start_f
+		;;
+
+	"stop")
+		stop_f
+		;;
+
+	"restart")
+		restart_f
+		;;
+	*)
+		error_f
+		;;
+esac
