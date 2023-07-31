@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Comment
+
+for pid in $(pgrep -f 7-highlande)
+do
+	kill -9 "$pid"
+done
