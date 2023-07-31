@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Comment
+
+kill -9 $(pgrep 4-to_infinity_and_beyond)
