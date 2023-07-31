@@ -14,7 +14,7 @@ stop_f()
 {
   rm -rf /var/run/my_process.pid
   echo "manage_my_process stopped"
-  pkill -f manage_my_process
+  pkill -x manage_my_process
 }
 
 restart_f()
