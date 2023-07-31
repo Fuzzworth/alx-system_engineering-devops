@@ -3,5 +3,5 @@
 
 for pid in $(pgrep -f 4-to_infinity_and_beyond)
 do
-	kill -9 $pid
+	kill -9 "$pid"
 done
