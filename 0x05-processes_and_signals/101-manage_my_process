@@ -3,7 +3,6 @@
 
 start_f()
 {
-
 	./manage_my_process &
 	echo "$!" > /var/run/my_process.pid
 	echo "manage_my_process started"
@@ -11,15 +10,14 @@ start_f()
 
 stop_f()
 {
-
-	kill "$(cat /var/run/my-my_process.pid)"
+	kill "$(cat /var/run/my_process.pid)"
 	rm -rf /var/run/my_process.pid
 	echo "manage_my_process stopped"
 }
 
 restart_f()
 {
-	kill "$(cat /var/run/my-my_process.pid)"
+	kill "$(cat /var/run/my_process.pid)"
 	rm -rf /var/run/my_process.pid
 	./manage_my_process &
 	echo "$!" > /var/run/my_process.pid
@@ -41,7 +39,6 @@ do
 	opt="$1"
 	shift;
 	case $opt in
-
 		start)
 			start_f
 			;;
