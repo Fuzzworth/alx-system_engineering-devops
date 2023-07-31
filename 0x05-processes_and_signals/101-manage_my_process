@@ -29,7 +29,7 @@ error_f()
 	exit 1
 }
 
-if [ $# -ne 2 ]; then
+if [ $# -ne 1 ]; then
 	error_f
 fi
 while [ $# -gt 0 ]
