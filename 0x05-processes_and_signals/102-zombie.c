@@ -36,10 +36,7 @@ int main(void)
 	{
 		zombie_pid = fork();
 		if (zombie_pid > 0)
-		{
 			printf("Zombie process created, PID: %d\n", zombie_pid);
-			sleep(1);
-		}
 		else
 			exit(0);
 	}
