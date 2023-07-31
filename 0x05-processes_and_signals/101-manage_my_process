@@ -21,6 +21,7 @@ restart_f()
 {
 	high_2
 	high_1
+	echo "manage_my_process restarted"
 }
 
 error_f()
