@@ -3,10 +3,18 @@
 
 trap high_2 SIGTERM
 trap high_3 SIGINT
+trap high_1 SIGQUIT
+
+high_1()
+{
+  rm -rf /var/run/myscript.pid
+  exit
+}
 
 high_2()
 {
   echo "I hate the kill command"
+  high_1
 }
 
 high_3()
