@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
 if ARGV.length == 1
-  puts ARGV[0].scan(/h/)
+  puts ARGV[0].scan(/h/)i.join("")
   exit
 end
