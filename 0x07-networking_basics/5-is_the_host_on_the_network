@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Comment
 
-if [ "$#" -ne 1]
+if [ "$#" -ne 1 ]
 then
     echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
     exit
