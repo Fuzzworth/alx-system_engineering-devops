@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Comment
+cp /etc/hosts ./hosts.new
+sed -i s/127.0.0.1/127.0.0.2/ ./hosts.new
+sed -i a/8.8.8.8\tfacebook.com/ ./hosts.new
