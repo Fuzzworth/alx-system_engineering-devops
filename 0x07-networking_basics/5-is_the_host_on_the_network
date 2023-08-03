@@ -13,5 +13,4 @@ then
 else
 	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
 	exit
-	echo "fail"
 fi
