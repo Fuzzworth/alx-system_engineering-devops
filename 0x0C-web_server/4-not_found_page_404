@@ -1,8 +1,15 @@
 #!/usr/bin/env bash
 # Docs
-sudo apt-get -y update
-sudo apt-get -y install nginx
-echo "Holberton School" | sudo tee /var/www/html/index.nginx-debian.html
-echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/custom_404.html
-sudo sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/luischaparroc permanent;\n\n\terror_page 404 \/custom_404.html;\n\tlocation = \/custom_404.html {\n\t\troot \/usr\/share\/nginx\/html;\n\t\tinternal;\n\t}/" /etc/nginx/sites-available/default
-sudo service nginx start
+sudo apt-get update -y
+sudo apt-get install -y nginx
+sudo echo "Hello World!" | sudo tee /var/www/html/index.html
+sudo sed -i '53r /dev/stdin' /etc/nginx/sites-enabled/default <<< "        location /redirect_me {
+                 return 301 https://www.youtube.com/watch?v=3lFkDc6dFoY;
+        }"
+sudo echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_404.html
+sudo sed -i '53r /dev/stdin' /etc/nginx/sites-enabled/default <<< "        error_page 404 /custom_404.html;
+        location = /custom_404.html {
+                 root /var/www/html;
+                 internal;
+        }"
+sudo service nginx restart
