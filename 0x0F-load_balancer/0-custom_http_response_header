@@ -1,19 +1,6 @@
 #!/usr/bin/env bash
 # Update the package list and install nginx
-ip1="54.237.61.71 fuzzfoo.tech"
-ip2="54.146.64.127 fuzzfoo.tech"
 server_name=$(hostname)
-case $server_name in
-    229357-web-01)
-        server_ip="$ip1"
-        ;;
-    229357-web-02)
-        server_ip="$ip2"
-        ;;
-    *)
-        server_ip="_"
-        ;;
-esac
 sudo apt update
 sudo apt install nginx -y
 sudo ufw allow 'Nginx HTTP'
