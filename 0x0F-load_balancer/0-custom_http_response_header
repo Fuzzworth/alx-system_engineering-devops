@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Update the package list and install nginx
 ip1="54.237.61.71"
 ip2="54.146.64.127"
