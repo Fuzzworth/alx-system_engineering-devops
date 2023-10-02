@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# Update the package list and install nginx
+sudo apt update
+sudo apt install nginx -y
+
+# Unblock Nginx from the firewall
+sudo ufw allow 'Nginx HTTP'
+
+# Create or overwrite the index.nginx-debian.html file
+echo "Holberton School" | sudo tee /var/www/html/index.nginx-debian.html
+
+# Create or overwrite the custom_404.html file
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/custom_404.html
+
+# Create an Nginx config file with a dynamic server_name
+server_name=$(hostname -f)
+cat <<EOF | sudo tee /etc/nginx/sites-available/web
+server {
+    listen 80;
+    listen [::]:80;
+
+    root /var/www/html;
+
+    # Add index.php to the list if you are using PHP
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name $server_name;
+
+    location / {
+        # First attempt to serve request as file, then
+        # as a directory, then fall back to displaying a 404.
+        try_files $uri $uri/ =404;
+    }
+
+    error_page 404 /custom_404.html;
+    location = /custom_404.html {
+        root /var/www/html;
+        internal;
+    }
+
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=3lFkDc6dFoY;
+    }
+}
+EOF
+
+# Create a symbolic link to enable the config file
+sudo ln -s /etc/nginx/sites-available/web /etc/nginx/sites-enabled/
+
+# Test the Nginx configuration
+sudo nginx -t
+
+# If the configuration test passes, restart Nginx
+if [ $? -eq 0 ]; then
+    sudo systemctl restart nginx
+else
+    echo "Nginx configuration test failed. Please check your configuration."
+fi
+
