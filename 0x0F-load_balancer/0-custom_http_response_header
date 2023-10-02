@@ -5,10 +5,10 @@ ip2 ="54.146.64.127"
 server_name=$(hostname)
 case "$hostname" in
     229357-web-01)
-        server_ip=$ip1
+        server_ip="$ip1"
         ;;
     229357-web-02)
-        server_ip=$ip2
+        server_ip="$ip2"
         ;;
     *)
         server_ip="_"
