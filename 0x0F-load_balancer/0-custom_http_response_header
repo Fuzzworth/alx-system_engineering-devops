@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Update the package list and install nginx
-ip1="54.237.61.71"
-ip2="54.146.64.127"
+ip1="54.237.61.71 fuzzfoo.tech"
+ip2="54.146.64.127 fuzzfoo.tech"
 server_name=$(hostname)
 case $server_name in
     229357-web-01)
