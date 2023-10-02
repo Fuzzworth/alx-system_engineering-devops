@@ -40,7 +40,7 @@ server {
 EOF
 
 sudo ln -s /etc/nginx/sites-available/web /etc/nginx/sites-enabled/
-if ! sudo nginx -t;then
+if sudo nginx -t;then
     sudo systemctl restart nginx
 else
     echo "Nginx configuration test failed. Please check your configuration."
