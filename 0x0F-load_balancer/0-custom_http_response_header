@@ -1,6 +1,19 @@
 #!/bin/bash
 # Update the package list and install nginx
+ip1 ="54.237.61.71"
+ip2 ="54.146.64.127"
 server_name=$(hostname)
+case "$hostname" in
+    229357-web-01)
+        server_ip=$ip1
+        ;;
+    229357-web-02)
+        server_ip=$ip2
+        ;;
+    *)
+        server_ip="_"
+        ;;
+esac
 sudo apt update
 sudo apt install nginx -y
 sudo ufw allow 'Nginx HTTP'
@@ -16,7 +29,7 @@ server {
     # Add index.php to the list if you are using PHP
     index index.html index.htm index.nginx-debian.html;
 
-    server_name fuzzfoo.tech;
+    server_name $server_ip;
 
     location / {
         # First attempt to serve request as file, then
