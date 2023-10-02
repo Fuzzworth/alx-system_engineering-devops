@@ -17,19 +17,19 @@ esac
 sudo apt update
 sudo apt install nginx -y
 sudo ufw allow 'Nginx HTTP'
-echo "Holberton School - $server_name" | sudo tee /var/www/html/index.nginx-debian.html
-echo "Ceci n'est pas une page - $server_name" | sudo tee /usr/share/nginx/html/custom_404.html
-cat <<EOF | sudo tee /etc/nginx/sites-available/web
+echo "Holberton School - $server_name" > /var/www/html/index.nginx-debian.html
+echo "Ceci n'est pas une page - $server_name" > /usr/share/nginx/html/custom_404.html
+cat <<EOF | sudo tee /etc/nginx/sites-enabled/default
 server {
-    listen 80;
-    listen [::]:80;
+    listen 80 default_server;
+    listen [::]:80 default_server;
 
     root /var/www/html;
 
     # Add index.php to the list if you are using PHP
     index index.html index.htm index.nginx-debian.html;
 
-    server_name $server_ip;
+    server_name _;
 
     location / {
         # First attempt to serve request as file, then
@@ -52,9 +52,4 @@ server {
 }
 EOF
 
-sudo ln -s /etc/nginx/sites-available/web /etc/nginx/sites-enabled/
-if sudo nginx -t;then
-    sudo systemctl restart nginx
-else
-    echo "Nginx configuration test failed. Please check your configuration."
-fi
+sudo systemctl restart nginx
