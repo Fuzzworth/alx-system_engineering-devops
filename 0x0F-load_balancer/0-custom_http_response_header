@@ -4,8 +4,8 @@ server_name=$(hostname)
 sudo apt update
 sudo apt install nginx -y
 sudo ufw allow 'Nginx HTTP'
-echo "Holberton School - $server_name" > /var/www/html/index.nginx-debian.html
-echo "Ceci n'est pas une page - $server_name" > /usr/share/nginx/html/custom_404.html
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+echo "Ceci n'est pas une error_page" > /usr/share/nginx/html/custom_404.html
 cat <<EOF | sudo tee /etc/nginx/sites-enabled/default
 server {
     listen 80 default_server;
