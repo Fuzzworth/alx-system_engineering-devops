@@ -3,7 +3,7 @@
 ip1 ="54.237.61.71"
 ip2 ="54.146.64.127"
 server_name=$(hostname)
-case "$hostname" in
+case $server_name in
     229357-web-01)
         server_ip="$ip1"
         ;;
