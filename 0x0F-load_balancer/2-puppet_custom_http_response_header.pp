@@ -14,6 +14,10 @@ service { 'nginx':
   require => Package['nginx'],
 }
 
+file { '/var/www/html/index.html' :
+  content => 'Hello World!',
+}
+
 file_line { 'Creating header':
   	ensure => present,
   	path   => '/etc/nginx/sites-available/default',
