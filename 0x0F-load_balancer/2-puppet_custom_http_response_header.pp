@@ -1,3 +1,4 @@
+# Task 2
 package { 'nginx':
   ensure => 'installed',
 }
