@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
-
 # Update the package list and install HAProxy
-sudo apt-get update
+sudo apt-get -y update
 sudo apt-get install -y haproxy
-
-# Backup the original HAProxy configuration file
-sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bak
-
-# Create a new HAProxy configuration file
 sudo tee /etc/haproxy/haproxy.cfg >/dev/null <<EOL
 global
     log /dev/log    local0
@@ -38,11 +32,5 @@ backend servers
     server server2 54.146.64.127:80 check
 EOL
 
-# Enable HAProxy to start at boot
 sudo systemctl enable haproxy
-
-# Start HAProxy
 sudo systemctl start haproxy
-
-# Verify the HAProxy status
-sudo systemctl status haproxy
