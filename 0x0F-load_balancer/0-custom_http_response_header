@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Update the package list and install nginx
 server_name=$(hostname)
-sudo apt update -y
-sudo apt install nginx -y
+sudo apt-get update -y
+sudo apt-get install nginx -y
 sudo ufw allow 'Nginx HTTP'
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
 echo "Ceci n'est pas une error_page" > /usr/share/nginx/html/custom_404.html
