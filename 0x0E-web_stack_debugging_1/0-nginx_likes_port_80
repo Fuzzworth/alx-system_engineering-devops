@@ -114,5 +114,5 @@ server {
 #	}
 #}
 "
-cat $config > /etc/nginx/sites-enabled/default
+echo "$config" > /etc/nginx/sites-enabled/default
 service nginx restart
