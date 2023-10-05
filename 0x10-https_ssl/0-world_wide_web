@@ -17,13 +17,12 @@ subdomain="$2"
 
 if [ -z "$subdomain" ]; then
 	for element in "${my_array[@]}"; do
-		dig_ouput=$(dig "$domain" | grep -A1 "ANSWER SECTION" | tail -n 1)
+		dig_ouput=$(dig "$element.$domain" | grep -A1 "ANSWER SECTION" | tail -n 1)
 		record=$(echo $dig_ouput | awk '{print $4}')
 		ip=$(echo $dig_ouput | awk '{print $5}')
 		print_dns_info "$element" "$record" "$ip"
 	done
 else
-	dig_ouput=$(dig "$subdomain.$domain" | grep -A1 "ANSWER SECTION" | tail -n 1)
 	record=$(echo $dig_ouput | awk '{print $4}')
 	ip=$(echo $dig_ouput | awk '{print $5}')
 	print_dns_info "$subdomain" "$record" "$ip"
