@@ -26,7 +26,7 @@ subdomain="$2"
 
 if [ -z "$subdomain" ]; then
 	for element in "${my_array[@]}"; do
-		dig_domain "$elemnet" "$domain"
+		dig_domain "$element" "$domain"
 	done
 else
 	dig_domain "$subdomain" "$domain"
