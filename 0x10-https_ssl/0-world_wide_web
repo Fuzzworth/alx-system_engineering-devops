@@ -21,7 +21,6 @@ if [ -z "$subdomain" ]; then
 	ip=$(echo $dig_ouput | awk '{print $5}')
 	for element in "${my_array[@]}"; do
 		print_dns_info "$element" "$record" "$ip"
-		echo "$element"
 	done
 else
 	dig_ouput=$(dig "$subdomain.$domain" | grep -A1 "ANSWER SECTION" | tail -n 1)
