@@ -1,2 +1,31 @@
 #!/usr/bin/env bash
 # Docs
+print_dns_info() {
+	local SUB_DOMAIN="$1"
+	local RECORD_TYPE="$2"
+	local DESTINATION="$3"
+
+	echo "The subdomain $SUB_DOMAIN is a $RECORD_TYPE record and points to $DESTINATION"
+}
+my_array=("www" "lb-01" "web-01" "web-02")
+if [ $# -lt 1 ]; then
+	exit 1
+fi
+
+domain="$1"
+subdomain="$2"
+
+if [ -z "$subdomain" ]; then
+	dig_ouput=$(dig "$domain" | grep -A1 "ANSWER SECTION" | tail -n 1)
+	record=$(echo $dig_ouput | awk '{print $4}')
+	ip=$(echo $dig_ouput | awk '{print $5}')
+	for element in "${my_array[@]}"; do
+		print_dns_info "$element" "$record" "$ip"
+		echo "$element"
+	done
+else
+	dig_ouput=$(dig "$subdomain.$domain" | grep -A1 "ANSWER SECTION" | tail -n 1)
+	record=$(echo $dig_ouput | awk '{print $4}')
+	ip=$(echo $dig_ouput | awk '{print $5}')
+	print_dns_info "$subdomain" "$record" "$ip"
+fi
