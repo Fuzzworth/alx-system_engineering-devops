@@ -8,7 +8,6 @@ import sys
 
 
 if __name__ == "__main__":
-    
     users_j = requests.get("https://jsonplaceholder.typicode.com/users").json()
     todos_j = requests.get('https://jsonplaceholder.typicode.com/todos').json()
     todos = {}
