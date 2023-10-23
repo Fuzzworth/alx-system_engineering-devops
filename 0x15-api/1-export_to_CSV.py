@@ -30,5 +30,5 @@ if __name__ == "__main__":
                                      delimiter=',',
                                      quotechar='"',
                                      quoting=csv.QUOTE_ALL)
-        for task in l_task:
+        for task in tasks:
             emp_writer.writerow(task)
