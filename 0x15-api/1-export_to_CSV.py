@@ -20,7 +20,7 @@ if __name__ == "__main__":
     res = requests.get(todos_str)
     tasks = []
     for task in res.json():
-        tasks.append([userid,
+        tasks.append([user_id,
                        name,
                        task.get('completed'),
                        task.get('title')])
