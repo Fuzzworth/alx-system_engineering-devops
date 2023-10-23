@@ -10,7 +10,7 @@ import csv
 if __name__ == "__main__":
     user_id = sys.argv[1]
     url_str = 'https://jsonplaceholder.typicode.com/'
-    user_str = '{}users/{}'.format(url_str, useri_id)
+    user_str = '{}users/{}'.format(url_str, user_id)
     todos_str = '{}todos?userId={}'.format(url_str, user_id)
     file = '{}.csv'.format(user_id)
 
