@@ -21,7 +21,7 @@ if __name__ == "__main__":
     tasks = []
     for task in res.json():
         tasks.append([user_id,
-                       name,
+                       username,
                        task.get('completed'),
                        task.get('title')])
 
