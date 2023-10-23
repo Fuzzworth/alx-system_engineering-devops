@@ -20,10 +20,7 @@ if __name__ == "__main__":
     res = requests.get(todos_str)
     tasks = []
     for task in res.json():
-        tasks.append([user_id,
-                       username,
-                       task.get('completed'),
-                       task.get('title')])
+        tasks.append([user_id, username, task.get('completed'), task.get('title')])
 
     with open(file, mode='w') as emp_file:
         emp_writer = csv.writer(emp_file,
