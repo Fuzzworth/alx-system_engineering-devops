@@ -24,9 +24,7 @@ if __name__ == "__main__":
                       task.get('completed'), task.get('title')])
 
     with open(file, mode='w') as emp_file:
-        emp_writer = csv.writer(emp_file,
-                                     delimiter=',',
-                                     quotechar='"',
-                                     quoting=csv.QUOTE_ALL)
+        emp_writer = csv.writer(emp_file, delimiter=',', quotechar='"',
+                                quoting=csv.QUOTE_ALL)
         for task in tasks:
             emp_writer.writerow(task)
