@@ -17,7 +17,7 @@ def number_of_subscribers(subreddit):
     sort = 'top'
     limit = 10
     response = requests.get('{}/r/{}/.json?sort={}&limit={}'.format(
-        url,subreddit,'top',10),
+        url, subreddit, 'top', 10),
         headers=headers,
         allow_redirects=False)
     if response.status_code == 200:
