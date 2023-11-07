@@ -5,7 +5,7 @@ Module Docs
 import requests
 
 
-def top_ten(subreddit)
+def top_ten(subreddit):
     """
     Function Docs
     """
