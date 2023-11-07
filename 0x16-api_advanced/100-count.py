@@ -26,19 +26,12 @@ def count_words(subreddit, word_list, instances={}, count=0, after=""):
         print("")
         return None
 
-    results = response.json().get("data")
-    count += results.get("dist")
-    for child in results.get("children"):
-        title = child.get("data").get("title").lower().split()
+    if not instances:
         for word in word_list:
-            if word.lower() in title:
-                times = len([x for x in title if x == word.lower()])
-                if instances.get(word) is None:
-                    instances[word] = times
-                else:
-                    instances[word] += times
+            if word.lower() not in word_dict:
+                word_dict[word.lower()] = 0
 
-    if results.get("after") is None:
+    if after is None:
         if len(instances) == 0:
             print("")
             return
@@ -50,5 +43,16 @@ def count_words(subreddit, word_list, instances={}, count=0, after=""):
             if instance[1]:
                 print("{}: {}".format(instance[0], instance[1]))
         return None
-    else:
-        count_words(subreddit, word_list, instances, after, count)
+    try:
+        hot = response.json()['data']['children']
+        aft = response.json()['data']['after']
+        for post in hot:
+            title = post['data']['title']
+            lower = [word.lower() for word in title.split(' ')]
+
+            for word in word_dict.keys():
+                word_dict[word] += lower.count(word)
+
+    except Exception:
+        return None
+    count_words(subreddit, word_list, instances, count, after)
