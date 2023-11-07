@@ -41,7 +41,6 @@ def count_words(subreddit, word_list, instances={}, after=""):
 
     try:
         hot = response.json()['data']['children']
-        aft = response.json()['data']['after']
         for post in hot:
             title = post['data']['title']
             lower = [word.lower() for word in title.split(' ')]
