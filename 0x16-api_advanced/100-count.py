@@ -18,7 +18,6 @@ def count_words(subreddit, word_list, instances={}, count=0, after=""):
         for word in word_list:
             if word.lower() not in instances:
                 instances[word.lower()] = 0
-    print(instances)
 
     if after is None:
         instances = sorted(
@@ -26,7 +25,7 @@ def count_words(subreddit, word_list, instances={}, count=0, after=""):
                 key=lambda key_value: (-key_value[1], key_value[0])
                 )
         for key, value in instances.items():
-            print(f"{key}: {value}")
+            print("{}: {}".format(key, value))
         return None
 
     response = requests.get(
@@ -38,7 +37,6 @@ def count_words(subreddit, word_list, instances={}, count=0, after=""):
         if response.status_code != 200:
             raise Exception
     except Exception:
-        print("")
         return None
 
     try:
@@ -47,7 +45,6 @@ def count_words(subreddit, word_list, instances={}, count=0, after=""):
         for post in hot:
             title = post['data']['title']
             lower = [word.lower() for word in title.split(' ')]
-
             for word in instances.keys():
                 instances[word] += lower.count(word)
 
