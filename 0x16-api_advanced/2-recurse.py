@@ -15,7 +15,7 @@ def recurse(subreddit, hot_list=[], count=0, after=None):
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
     }
     if after is None:
-        after = '' 
+        after = ''
     response = requests.get(
             '{}/r/{}/.json?sort={}&limit={}&count={}&after={}'.format(
                 url, subreddit, 'hot', 30, count, after),
