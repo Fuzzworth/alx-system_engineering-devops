@@ -27,14 +27,14 @@ def count_words(subreddit, word_list, instances={}, count=0, after=""):
         return
 
     results = response.json().get("data")
-    count += int(results.get("dist"))
+    count += results.get("dist")
     for child in results.get("children"):
         title = child.get("data").get("title").lower().split()
         for word in word_list:
             if word.lower() in title:
                 for tit in title:
                     if tit == word.lower():
-                        times = len(tit)
+                        times += 1
                 if instances.get(word) is None:
                     instances[word] = times
                 else:
