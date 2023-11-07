@@ -14,8 +14,6 @@ def number_of_subscribers(subreddit):
         'Accept': 'application/json',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
     }
-    sort = 'top'
-    limit = 10
     response = requests.get('{}/r/{}/.json?sort={}&limit={}'.format(
         url, subreddit, 'top', 10),
         headers=headers,
