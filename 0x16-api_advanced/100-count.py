@@ -5,7 +5,7 @@ Module Docs
 import requests
 
 
-def count_words(subreddit, word_list, instances={}, count=0, after=""):
+def count_words(subreddit, word_list, instances={}, after=""):
     """
     Function Docs
     """
@@ -29,8 +29,8 @@ def count_words(subreddit, word_list, instances={}, count=0, after=""):
         return None
 
     response = requests.get(
-            '{}/r/{}/hot/.json?limit={}&count={}&after={}'.format(
-                url, subreddit, 100, count, after),
+            '{}/r/{}/hot/.json?limit={}&after={}'.format(
+                url, subreddit, 100, after),
             headers=header,
             allow_redirects=False)
     try:
@@ -50,4 +50,4 @@ def count_words(subreddit, word_list, instances={}, count=0, after=""):
 
     except Exception:
         return None
-    count_words(subreddit, word_list, instances, count, after)
+    count_words(subreddit, word_list, instances, after)
