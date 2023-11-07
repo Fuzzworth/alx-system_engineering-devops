@@ -20,11 +20,11 @@ def count_words(subreddit, word_list, instances={}, count=0, after=""):
             headers=header,
             allow_redirects=False)
     try:
-        if response.status_code == 404:
+        if response.status_code != 200:
             raise Exception
     except Exception:
         print("")
-        return
+        return None
 
     results = response.json().get("data")
     count += results.get("dist")
@@ -46,7 +46,9 @@ def count_words(subreddit, word_list, instances={}, count=0, after=""):
                 instances.items(),
                 key=lambda key_value: (-key_value[1], key_value[0])
                 )
-        for key, value in instances:
-            print(f"{key}: {value}")
+        for instance in instances:
+            if instance[1]:
+                print("{}: {}".format(instance[0], instance[1]))
+        return None
     else:
         count_words(subreddit, word_list, instances, after, count)
