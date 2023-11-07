@@ -27,7 +27,7 @@ def count_words(subreddit, word_list, instances={}, count=0, after=""):
         return
 
     results = response.json().get("data")
-    print(results)
+    print(results.get("dist"))
     count += results.get("dist")
     times = 0
     for child in results.get("children"):
