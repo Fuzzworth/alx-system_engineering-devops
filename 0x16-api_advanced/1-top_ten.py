@@ -16,7 +16,7 @@ def top_ten(subreddit):
     }
     response = requests.get('{}/r/{}/.json?sort={}&limit={}'.format(
         url, subreddit, 'top', 10),
-        headers=headers,
+        headers=header,
         allow_redirects=False)
     if response.status_code == 200:
         for post in response.json()['data']['children'][0:10]:
