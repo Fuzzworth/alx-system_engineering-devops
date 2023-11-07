@@ -13,8 +13,7 @@ def count_words(subreddit, word_list, instances={}, count=0, after=""):
     header = {
         'Accept': 'application/json',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
-    }
-    
+    } 
     if not instances:
         for word in word_list:
             if word.lower() not in instances:
