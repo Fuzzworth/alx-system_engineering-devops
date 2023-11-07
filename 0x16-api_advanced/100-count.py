@@ -50,8 +50,8 @@ def count_words(subreddit, word_list, instances={}, count=0, after=""):
             title = post['data']['title']
             lower = [word.lower() for word in title.split(' ')]
 
-            for word in word_dict.keys():
-                word_dict[word] += lower.count(word)
+            for word in instances.keys():
+                instances[word] += lower.count(word)
 
     except Exception:
         return None
