@@ -34,7 +34,7 @@ def count_words(subreddit, word_list, instances={}, count=0, after=""):
             if word.lower() in title:
                 for ocurrances in title:
                     if ocurrances == word.lower():
-                        times += len(ocurrances)
+                        times = len(ocurrances)
                 if ocurrances.get(word) is None:
                     ocurrances[word] = times
                 else:
