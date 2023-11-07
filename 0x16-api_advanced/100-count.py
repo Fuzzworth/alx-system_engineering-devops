@@ -29,7 +29,7 @@ def count_words(subreddit, word_list, instances={}, count=0, after=""):
     if not instances:
         for word in word_list:
             if word.lower() not in instances:
-                word_dict[word.lower()] = 0
+                instances[word.lower()] = 0
 
     if after is None:
         if len(instances) == 0:
