@@ -30,8 +30,8 @@ def count_words(subreddit, word_list, instances={}, count=0, after=""):
         return None
 
     response = requests.get(
-            '{}/r/{}/.json?sort={}&limit={}&count={}&after={}'.format(
-                url, subreddit, 'hot', 100, count, after),
+            '{}/r/{}/hot/.json?limit={}&count={}&after={}'.format(
+                url, subreddit, 100, count, after),
             headers=header,
             allow_redirects=False)
     try:
