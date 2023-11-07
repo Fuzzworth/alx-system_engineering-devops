@@ -24,9 +24,8 @@ def count_words(subreddit, word_list, instances={}, count=0, after=""):
                 instances.items(),
                 key=lambda key_value: (-key_value[1], key_value[0])
                 )
-        for instance in instances:
-            if instance[1]:
-                print("{}: {}".format(instance[0], instance[1]))
+        for key, value in instances.items():
+            print(f"{key}: {value}")
         return None
 
     response = requests.get(
