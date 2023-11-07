@@ -18,13 +18,13 @@ def count_words(subreddit, word_list, instances={}, count=0, after=""):
         for word in word_list:
             if word.lower() not in instances:
                 instances[word.lower()] = 0
+    print(instances)
 
     if after is None:
         instances = sorted(
                 instances.items(),
                 key=lambda key_value: (-key_value[1], key_value[0])
                 )
-        print(instances)
         for key, value in instances.items():
             print(f"{key}: {value}")
         return None
