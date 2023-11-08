@@ -8,6 +8,6 @@ file { '/var/www/html/wp-settings.php':
 service { 'apache2':
   ensure    => 'running',
   enable    => true,
-  provider  => 'service', # Use the appropriate provider for your system.
-  subscribe => File['/var/www/html/wp-settings.php'], # Ensure the service restarts when the file changes.
+  provider  => 'service',
+  subscribe => File['/var/www/html/wp-settings.php'],
 }
