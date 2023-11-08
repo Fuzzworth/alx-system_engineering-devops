@@ -1,13 +1,13 @@
-# Ensure the replacement is made in the wp-settings.php file
+# Step 1: Ensure the replacement is made in the wp-settings.php file
 file { '/var/www/html/wp-settings.php':
   ensure  => present,
-  content => replace('class-wp-locale.phpp', 'class-wp-locale.php'),
+  content => inline_template('<%= File.read("/var/www/html/wp-settings.php").gsub("class-wp-locale.phpp", "class-wp-locale.php") %>'),
 }
 
-# Restart the Apache2 service
-service { 'apache2':
-  ensure    => 'running',
-  enable    => true,
-  provider  => 'service', # Use the appropriate provider for your system.
-  subscribe => File['/var/www/html/wp-settings.php'], # Ensure the service restarts when the file changes.
+# Step 2: Restart the Apache2 service using Upstart
+exec { 'restart-apache':
+  command     => 'initctl restart apache2',
+  path        => '/sbin:/usr/sbin:/bin',
+  refreshonly => true,
+  subscribe   => File['/var/www/html/wp-settings.php'],
 }
