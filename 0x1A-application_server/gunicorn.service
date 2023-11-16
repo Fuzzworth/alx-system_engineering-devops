@@ -1,0 +1,16 @@
+# Docs
+[Unit]
+Description=Gunicorn AirBnB Clone V4
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/home/ubuntu/AirBnB_clone_v4
+ExecStart=/home/ubuntu/AirBnB_clone_v4/venv/bin/gunicorn -b 0.0.0.0:5003 -w 3 web_dynamic.2-hbnb:app
+Restart=always
+StandardOutput=file:/tmp/airbnb-access.log
+StandardError=file:/tmp/airbnb-error.log
+
+[Install]
+WantedBy=multi-user.target
