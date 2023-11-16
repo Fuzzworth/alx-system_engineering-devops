@@ -2,4 +2,4 @@
 # Get the PID of the master Gunicorn process
 master_pid=$(pgrep -f "gunicorn.*--workers")
 # Gracefully restart Gunicorn
-kill -s TERM $master_pid
+kill -s TERM "$master_pid"
